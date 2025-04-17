@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-03-18T03:58:52.397Z",
+    "end": "2025-03-18T03:59:00.997Z",
+    "duration": 8600,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "12c2a810-0f98-4a33-be7f-38475cb3bdeb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Resumelogin.cy.js",
+      "file": "cypress\\e2e\\Resumelogin.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3e1b4f39-80d3-4e69-a2e5-8bd95805754e",
+          "title": "Login Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should log in successfully and see the dashboard",
+              "fullTitle": "Login Test should log in successfully and see the dashboard",
+              "timedOut": null,
+              "duration": 4334,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const email = Cypress.env('QAEmailAddress');\n_QAlogin.default.login(email); // Use login method from the POM\n_QAlogin.default.checkDashboardUrl(); // Verify the URL is the dashboard after login",
+              "err": {},
+              "uuid": "e9270df9-ba7e-45f0-8083-a664a6928b22",
+              "parentUUID": "3e1b4f39-80d3-4e69-a2e5-8bd95805754e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show an error for incorrect credentials",
+              "fullTitle": "Login Test should show an error for incorrect credentials",
+              "timedOut": null,
+              "duration": 1460,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const email = 'invalid@example.com';\n_QAlogin.default.login(email); // Attempt to log in with incorrect credentials\n_QAlogin.default.getErrorMessage().should('be.visible'); // Verify error message is visible",
+              "err": {},
+              "uuid": "e2d69b8d-ef2b-41b3-af40-5159eb7272b8",
+              "parentUUID": "3e1b4f39-80d3-4e69-a2e5-8bd95805754e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e9270df9-ba7e-45f0-8083-a664a6928b22",
+            "e2d69b8d-ef2b-41b3-af40-5159eb7272b8"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5794,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "yyyy-mm-dd_HH-MM-ss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

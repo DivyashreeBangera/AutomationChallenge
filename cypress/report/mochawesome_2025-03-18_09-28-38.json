@@ -1,0 +1,182 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-03-18T03:58:20.052Z",
+    "end": "2025-03-18T03:58:38.443Z",
+    "duration": 18391,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b25e3555-f3a9-4b93-b552-c7751d4046bf",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Orionlogin.cy.js",
+      "file": "cypress\\e2e\\Orionlogin.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "611d9c7f-e8e8-455c-abd3-b2ee365c952f",
+          "title": "Orion Login Screen Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should load the login screen with e-mail address and password fields",
+              "fullTitle": "Orion Login Screen Tests should load the login screen with e-mail address and password fields",
+              "timedOut": null,
+              "duration": 5200,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Check if the login form is visible\ncy.get('form').should('be.visible');\n// Ensure the e-mail address input field exists\ncy.get('input[id=\"username\"]').should('be.visible');\n// Ensure the password input field exists\ncy.get('input[id=\"password\"]').should('be.visible');\n// Ensure the login button is visible\ncy.get('input[type=\"submit\"]').should('be.visible').should('have.attr', 'value', 'Login');",
+              "err": {},
+              "uuid": "8623d4cb-1936-463b-959e-419394db2c4c",
+              "parentUUID": "611d9c7f-e8e8-455c-abd3-b2ee365c952f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message when e-mail address and password are empty",
+              "fullTitle": "Orion Login Screen Tests should show error message when e-mail address and password are empty",
+              "timedOut": null,
+              "duration": 1856,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Click the login button without entering any credentials\ncy.get('input[type=\"submit\"]').click();\n// Check if an error message is displayed for missing credentials\ncy.get('.swal2-popup').should('be.visible').and('contain.text', 'Missing e-mail address');",
+              "err": {},
+              "uuid": "af9ca5fa-7697-46d0-bce7-6ce991ad631b",
+              "parentUUID": "611d9c7f-e8e8-455c-abd3-b2ee365c952f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message when invalid credentials are entered",
+              "fullTitle": "Orion Login Screen Tests should show error message when invalid credentials are entered",
+              "timedOut": null,
+              "duration": 2407,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Enter invalid username and password\ncy.get('input[id=\"username\"]').type('wrongemail');\ncy.get('input[id=\"password\"]').type('wrongpassword');\n// Click the login button\ncy.get('input[type=\"submit\"]').click();\n// Check if the error message is shown for invalid login\ncy.get('.swal2-popup').should('be.visible').and('contain.text', 'Invalid Credentials');",
+              "err": {},
+              "uuid": "c15c5bda-bd2a-47d6-a4ea-fe66b8212793",
+              "parentUUID": "611d9c7f-e8e8-455c-abd3-b2ee365c952f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should log in successfully with correct credentials",
+              "fullTitle": "Orion Login Screen Tests should log in successfully with correct credentials",
+              "timedOut": null,
+              "duration": 3872,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Enter valid username and password\ncy.get('input[id=\"username\"]').type('divyashree.b-x+orionadm@auxosolutions.io');\ncy.get('input[id=\"password\"]').type('unqork@12345');\n// Click the login button\ncy.get('input[type=\"submit\"]').click();\n// Check if redirected to the dashboard after successful login\ncy.url().should('include', 'https://vantage-uatx.unqork.io/#/display/6706b5d7eb0bc5f6399f9b1c'); // Replace with your actual redirected URL\ncy.get('.page-title').should('be.visible').should('have.text', 'Dashboard');",
+              "err": {},
+              "uuid": "f561d89e-f081-419c-bf89-bd7f69680ec7",
+              "parentUUID": "611d9c7f-e8e8-455c-abd3-b2ee365c952f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show a loading spinner when login is in progress",
+              "fullTitle": "Orion Login Screen Tests should show a loading spinner when login is in progress",
+              "timedOut": null,
+              "duration": 2344,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// login request to show loading spinner\ncy.get('input[id=\"username\"]').type('divyashree.b-x+orionadm@auxosolutions.io');\ncy.get('input[id=\"password\"]').type('unqork@12345');\ncy.get('input[type=\"submit\"]').click({\n  timeout: 40000\n});\n// Check if the loading spinner appears\ncy.get('.ng-scope').should('be.visible');\n// Simulate waiting for the login to complete\n//cy.wait(2000); \n//cy.get('.ng-scope').should('not.be.visible');",
+              "err": {},
+              "uuid": "ff8af1e6-7967-42b9-88cd-dfab81262bdd",
+              "parentUUID": "611d9c7f-e8e8-455c-abd3-b2ee365c952f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8623d4cb-1936-463b-959e-419394db2c4c",
+            "af9ca5fa-7697-46d0-bce7-6ce991ad631b",
+            "c15c5bda-bd2a-47d6-a4ea-fe66b8212793",
+            "f561d89e-f081-419c-bf89-bd7f69680ec7",
+            "ff8af1e6-7967-42b9-88cd-dfab81262bdd"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 15679,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "yyyy-mm-dd_HH-MM-ss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

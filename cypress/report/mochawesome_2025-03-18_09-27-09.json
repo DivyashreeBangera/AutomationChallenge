@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-03-18T03:56:41.331Z",
+    "end": "2025-03-18T03:57:09.022Z",
+    "duration": 27691,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d4a79cda-fce3-4dd9-ba4e-24f0786ab494",
+      "title": "",
+      "fullFile": "cypress\\e2e\\ExcelUpload.cy.js",
+      "file": "cypress\\e2e\\ExcelUpload.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a23f1223-3ed3-4464-901c-d65cc066b82a",
+          "title": "Login Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user can upload excel file successully",
+              "fullTitle": "Login Test Verify user can upload excel file successully",
+              "timedOut": null,
+              "duration": 18758,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//const filePath = 'test-files/singlepdf.pdf  '; \nconst month = Cypress.env('month');\nexpect(month, \"Month should be defined\").to.not.be.undefined;\nconst role = Cypress.env('role');\nexpect(role, \"Role should be defined\").to.not.be.undefined;\nconst expectedMonths = ['Select a month', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];\n_excelupload.default.validateexcelMonthOptions(expectedMonths);\n_excelupload.default.selectexcelMonth(month);\nconst downloadFileName = 'excel_test_sample.xlsx';\n// Step 1: Go to the download button\n_excelupload.default.clickDownloadButton();\n// Step 3: Verify if the file was downloaded successfully\n_excelupload.default.verifyDownload(downloadFileName);\n// it('Validating the upload a file',()=>{\nconst filePath = 'excelresume3.xlsx';\n// Upload the file\n_excelupload.default.uploadExcelFile(filePath);\n// Verify the upload success\n//excelupload.verifyExcelUploadSuccess();\n//verifying uploading same file again and verifying the already exists message\n//excelupload.uploadExcelFile(filePath);\n// excelupload.verifydublicateupload();\n// Read & Validate Excel Data\n_pdfupload.default.gotoresumemanagement().click();\n_excelupload.default.resumemonthselect(month);\ncy.task('parseExcel', {\n  filePath: 'excelresume3.xlsx',\n  sheetName: 'Sheet1'\n}).then(excelData => {\n  _excelupload.default.readingexcel(excelData);\n});",
+              "err": {},
+              "uuid": "52966483-70a2-4d28-92ae-d1ac7028f43e",
+              "parentUUID": "a23f1223-3ed3-4464-901c-d65cc066b82a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "52966483-70a2-4d28-92ae-d1ac7028f43e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 18758,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "yyyy-mm-dd_HH-MM-ss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

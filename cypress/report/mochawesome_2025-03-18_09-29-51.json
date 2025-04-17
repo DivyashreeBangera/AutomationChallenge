@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-18T03:59:36.973Z",
+    "end": "2025-03-18T03:59:51.138Z",
+    "duration": 14165,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "bafe929d-d4bc-497d-b4bc-36cb963d028f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\mercer.cy.js",
+      "file": "cypress\\e2e\\mercer.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c02e60e1-7288-45c9-ab17-2807b379e698",
+          "title": "Mercer Automation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Search Relationship",
+              "fullTitle": "Mercer Automation Search Relationship",
+              "timedOut": null,
+              "duration": 10211,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\mercer.cy.js\\\\Mercer Automation -- Search Relationship (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.get('#headerSearchInput').type(Relationship);\ncy.get('#fgSearchBarBtn').click();\ncy.wait(3000);\ncy.get('#jsGrid_vgRelationshipsSearchResults > .jsgrid-grid-body > .jsgrid-table > tbody > .jsgrid-row > :nth-child(1) > span > a').should('be.visible').and('contain.text', Relationship);\ncy.get('#jsGrid_vgRelationshipsSearchResults > .jsgrid-grid-body > .jsgrid-table > tbody > .jsgrid-row > :nth-child(1) > span > a').click();\n// creating new action\ncy.get('#btnCreateAction').click();\ncy.wait(2000);\n//select a relationship dropdown should display the searched relationship\ncy.get('.ng-isolate-scope > .ng-binding').should('be.visible').and('contain.text', Relationship);\n//select an category\ncy.get(':nth-child(7) > .control-label > .ng-binding').should('be.visible').and('contain.text', actioncategory).click();\n//next button should be enabled\ncy.get('#btnCreateActionNextZero').click();\n//move money heading should be present\ncy.get('#btnBackToCategory > .button-label').should('be.visible').and('contain.text', actioncategory);\n//select an action type\ncy.get('#form-group-newActActionType > .unq-radio-button-group > :nth-child(3) > .control-label > .ng-binding').should('be.visible').and('contain.text', actiontype).click();\n//Enter action nickname\ncy.get('#newActNickname').type('Test Action Nickname');\ncy.wait(2000);\ncy.viewport(1920, 1080);\n//Enter Action Context\n// Ensure the iframe is loaded\n//cy.frameLoaded('.cke_wysiwyg_frame');\n// Interact with elements inside the iframe\n// cy.iframe('.cke_wysiwyg_frame').find('body').clear().type('test action type');\ncy.get('#ccke_editable cke_editable_themed cke_contents_ltr cke_show_borders').eg(2).type('test action type');\n//click next button\ncy.get('#btnCreateActionNext').click();\ncy.wait(3000);\n//select Financial Account Number\ncy.get('#financialAccountNumberZero').click().select(financialno);\n//select distribution method\ncy.get('#distributionMethodZero').click().select();\n//select frequency\ncy.get('#frequencyZero').click().select(frequency);\n//click on create button\n//cy.get('#btnNotWealthAdvCreateConfirm').click()",
+              "err": {
+                "message": "TypeError: cy.get(...).eg is not a function",
+                "estack": "TypeError: cy.get(...).eg is not a function\n    at Context.eval (webpack://cypressautomation/./cypress/e2e/mercer.cy.js:57:87)",
+                "diff": null
+              },
+              "uuid": "c67daacc-ce55-4f75-920a-2f4838f3c270",
+              "parentUUID": "c02e60e1-7288-45c9-ab17-2807b379e698",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "c67daacc-ce55-4f75-920a-2f4838f3c270"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 10211,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "yyyy-mm-dd_HH-MM-ss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

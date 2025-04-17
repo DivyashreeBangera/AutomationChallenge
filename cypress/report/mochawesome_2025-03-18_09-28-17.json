@@ -1,0 +1,168 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 3,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-18T03:57:10.866Z",
+    "end": "2025-03-18T03:58:17.722Z",
+    "duration": 66856,
+    "testsRegistered": 4,
+    "passPercent": 75,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e82b0de3-d27b-40ec-b063-02fbaaaee1b6",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Orion-UploadPortfolio.cy.js",
+      "file": "cypress\\e2e\\Orion-UploadPortfolio.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a7d69617-e179-4d6c-b42a-6c6ce9d83e13",
+          "title": "Portfolio Upload Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should display error messages when clicked on Upload button without filling required details",
+              "fullTitle": "Portfolio Upload Test Should display error messages when clicked on Upload button without filling required details",
+              "timedOut": null,
+              "duration": 11418,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#btnUploadModalTrigger > .button-label').should('contain.text', '+ Upload / Update');\ncy.get('#btnUploadModalTrigger > .button-label').click();\n// Submit the form without filling fields\ncy.get('#btnUpload').click();\n//asserts the error message in the dialogue box\ncy.get('h2.swal2-title#swal2-title').should('have.text', 'Oops - 5 error(s) have been found!');\ncy.get('.swal2-confirm').click();\n//show assertion for portfolio name\ncy.get('#uploadPortfolioName-errors > ul > li').should('contain.text', 'Must enter a portfolio name.');\n//show assertion for start date\ncy.get('#projectStartDateUnformatted-errors > ul > .ng-binding').should('contain.text', 'Must select a project start date.');\n//show assertion for select buying entity\ncy.get('#buyingEntityId-errors > ul > .ng-binding').should('contain.text', 'Must select a buying entity.');\n//show assertion for select cohort\ncy.get('#cohorts-errors > ul > .ng-binding').should('contain.text', 'Select Cohort is required');\n//show assertion for file upload\ncy.get('#portfolioFile-errors > ul > .ng-binding').should('contain.text', 'Must upload a file.');",
+              "err": {},
+              "uuid": "007c3eb2-4e87-4241-bfff-4e83c53a507b",
+              "parentUUID": "a7d69617-e179-4d6c-b42a-6c6ce9d83e13",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should allow the user to upload a portfolio with all required details",
+              "fullTitle": "Portfolio Upload Test should allow the user to upload a portfolio with all required details",
+              "timedOut": null,
+              "duration": 12882,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\Orion-UploadPortfolio.cy.js\\\\Portfolio Upload Test -- should allow the user to upload a portfolio with all required details (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.fixture('orioninputdata').then(data => {\n  // Upload a file using drag-and-drop\n  const filePath = 'test-files/50avm.csv';\n  cy.get('#btnUploadModalTrigger > .button-label').should('contain.text', '+ Upload / Update');\n  cy.get('#btnUploadModalTrigger > .button-label').click();\n  // Enter portfolio name\n  cy.get('#uploadPortfolioName').type(data.uniqueportfolioname);\n  // Select portfolio start date\n  cy.get('#projectStartDateUnformatted').should('have.attr', 'placeholder', 'mm/dd/yy');\n  cy.get('#projectStartDateUnformatted').click().type(data.projectstartdate).type('{enter}');\n  //  portfolio type should display C/o by default\n  cy.get('#typeOfDeal').should('have.value', 'string:C/O');\n  // Select buying entity\n  cy.get('#buyingEntityId').select(data.buyingentity);\n  // Select cohorts (up to two options)\n  cy.get('.ui-select-search').click();\n  cy.contains('State').click();\n  cy.contains('Market').click();\n  // Verify \"Selected Cohort Information\" blurb\n  cy.get('#pSelectedCohortsInformation > .ng-binding > p').should('contain.text', 'Selecting cohorts allows you to view assets within your portfolio through the specified perspective. As an example, if you select Market & Bed/Bath count, you will get to see assets grouped by those characteristics:');\n  //cy.get('[data-cy=\"selected-cohort-info\"]').should('contain.text', 'Market & Bed/Bath count');\n  //upload a file\n  cy.get('#portfolioFile-button').attachFile(filePath, {\n    subjectType: 'drag-n-drop'\n  });\n  cy.viewport(1400, 1200);\n  // Submit the form\n  cy.get('#btnUpload').click();\n  cy.get('.swal2-confirm').click();\n  cy.get('#btnUpload').click();\n  // Assert successful submission\n  cy.get('.portfolio-creation-progress-modal > .modal-dialog > .modal-content').should('contain.text', 'Validation Completed');\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.portfolio-creation-progress-modal > .modal-dialog > .modal-content`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.portfolio-creation-progress-modal > .modal-dialog > .modal-content`, but never found it.\n    at Context.eval (webpack://cypressautomation/./cypress/e2e/Orion-UploadPortfolio.cy.js:75:82)",
+                "diff": null
+              },
+              "uuid": "ad5385dd-c89e-4496-b809-ec9c243db585",
+              "parentUUID": "a7d69617-e179-4d6c-b42a-6c6ce9d83e13",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "To validate cancel button",
+              "fullTitle": "Portfolio Upload Test To validate cancel button",
+              "timedOut": null,
+              "duration": 15382,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#btnUploadModalTrigger > .button-label').click();\ncy.wait(2000);\ncy.get('#btnCancel > .button-label').click();\n// assert the upload modal should be closed and should not be visible\ncy.get('#btnUploadModalTrigger > .button-label').should('contain.text', '+ Upload / Update');\n//cy.get('.ng-scope.ng-valid-number > :nth-child(3)').should('not.have.class', 'visible');",
+              "err": {},
+              "uuid": "4420be61-b64c-44c8-bf98-546031e6d6e9",
+              "parentUUID": "a7d69617-e179-4d6c-b42a-6c6ce9d83e13",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should display error message for the already used portfolio name",
+              "fullTitle": "Portfolio Upload Test Should display error message for the already used portfolio name",
+              "timedOut": null,
+              "duration": 22220,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('orioninputdata').then(data => {\n  cy.get('#btnUploadModalTrigger > .button-label').should('contain.text', '+ Upload / Update');\n  cy.get('#btnUploadModalTrigger > .button-label').click();\n  // Enter portfolio name\n  cy.get('#uploadPortfolioName').type(data.uniqueportfolioname, '{enter}');\n  cy.wait(4000);\n  cy.get('#form-group-colUploadPanelTopFields > .row').click();\n  cy.get('#portfolioNameUnique-errors > ul > li').should('contain.text', 'Portfolio Name must be unique.');\n});",
+              "err": {},
+              "uuid": "2ff486da-d654-43b8-b327-730640e01c3f",
+              "parentUUID": "a7d69617-e179-4d6c-b42a-6c6ce9d83e13",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "007c3eb2-4e87-4241-bfff-4e83c53a507b",
+            "4420be61-b64c-44c8-bf98-546031e6d6e9",
+            "2ff486da-d654-43b8-b327-730640e01c3f"
+          ],
+          "failures": [
+            "ad5385dd-c89e-4496-b809-ec9c243db585"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 61902,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "yyyy-mm-dd_HH-MM-ss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
